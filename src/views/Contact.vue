@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
+import { Mail, MapPin, Phone, Send } from 'lucide-vue-next'
 
 const formData = reactive({
   name: '',
@@ -19,9 +20,9 @@ const handleSubmit = (e: Event) => {
 }
 
 const contactInfo = [
-  { icon: '✉', label: 'Email', value: 'm.paisible7@gmail.com' },
-  { icon: '☎', label: 'Téléphone', value: '+243 992 142 932' },
-  { icon: '📍', label: 'Localisation', value: 'Lubumbashi, RDCongo' },
+  { icon: Mail, label: 'Email', value: 'm.paisible7@gmail.com' },
+  { icon: Phone, label: 'Téléphone', value: '+243 992 142 932' },
+  { icon: MapPin, label: 'Localisation', value: 'Lubumbashi, RDCongo' },
 ] as const
 </script>
 
@@ -52,7 +53,7 @@ const contactInfo = [
                 class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
               >
                 <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500/20 to-orange-500/20 border border-blue-500/30 flex items-center justify-center flex-shrink-0">
-                  <span class="text-blue-400">{{ item.icon }}</span>
+                  <component :is="item.icon" class="w-5 h-5 text-blue-400" />
                 </div>
                 <div>
                   <div class="text-white/60 text-sm">{{ item.label }}</div>
@@ -102,10 +103,10 @@ const contactInfo = [
 
             <button
               type="submit"
-              class="w-full relative px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-900 rounded-xl overflow-hidden transition-transform hover:scale-105 group"
+              class="w-full relative px-8 py-4 bg-gradient-to-r from-blue-500 to-orange-500 rounded-xl overflow-hidden transition-transform hover:scale-105 group"
             >
               <span class="relative z-10 flex items-center justify-center gap-2">
-                <span aria-hidden="true">✈</span>
+                <Send class="w-5 h-5" />
                 Envoyer le message
               </span>
               <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity" />

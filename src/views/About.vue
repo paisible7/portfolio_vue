@@ -1,22 +1,24 @@
 <script setup lang="ts">
+import { Code2, Lightbulb, Rocket, Zap } from 'lucide-vue-next'
+
 const highlights = [
   {
-    icon: '🧱',
+    icon: Code2,
     title: 'Code Propre',
     description: "Architecture modulaire et maintenable",
   },
   {
-    icon: '⚡',
+    icon: Zap,
     title: 'Performance',
     description: "Optimisation et rapidité d'exécution",
   },
   {
-    icon: '💡',
+    icon: Lightbulb,
     title: 'Innovation',
     description: 'Technologies de pointe et créativité',
   },
   {
-    icon: '🚀',
+    icon: Rocket,
     title: 'Livraison',
     description: 'Projets livrés dans les délais',
   },
@@ -68,7 +70,7 @@ const highlights = [
           class="group backdrop-blur-lg bg-white/5 border border-white/10 rounded-2xl p-6 shadow-2xl hover:bg-white/10 transition-all duration-300 hover:scale-105"
         >
           <div class="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500/20 to-orange-500/20 border border-blue-500/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-            <span class="text-2xl">{{ item.icon }}</span>
+            <component :is="item.icon" class="w-8 h-8 text-blue-400" />
           </div>
           <h4 class="text-lg text-white mb-2">{{ item.title }}</h4>
           <p class="text-white/60 text-sm">{{ item.description }}</p>

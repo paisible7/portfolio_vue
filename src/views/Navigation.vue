@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { Menu, X } from 'lucide-vue-next'
+import ImageWithFallback from '@/components/figma/ImageWithFallback.vue'
 
 const props = defineProps<{
   activeSection: 'home' | 'about' | 'projects' | 'skills' | 'contact'
@@ -34,6 +36,7 @@ const scrollToSection = (id: typeof navItems[number]['id']) => {
           <div class="text-xl tracking-wider">
             <span class="bg-gradient-to-r from-blue-400 to-orange-400 bg-clip-text text-transparent">
               <!-- Logo / Marque -->
+              <img src="/logoMP.png" class="w-10"/>
             </span>
           </div>
 
@@ -60,8 +63,8 @@ const scrollToSection = (id: typeof navItems[number]['id']) => {
             class="md:hidden p-2 hover:bg-white/10 rounded-lg transition-colors"
             aria-label="Ouvrir/fermer le menu"
           >
-            <span v-if="!isOpen">☰</span>
-            <span v-else>✕</span>
+            <Menu v-if="!isOpen" class="w-6 h-6 text-white" />
+            <X v-else class="w-6 h-6 text-white" />
           </button>
         </div>
 

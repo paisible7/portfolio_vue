@@ -37,7 +37,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="relative min-h-screen text-white overflow-hidden">
+  <div class="relative min-h-screen bg-gradient-to-br from-black via-slate-950 to-blue-950 text-white overflow-hidden">
     <CodeBackground />
     <Navigation :active-section="activeSection" />
 
@@ -48,6 +48,8 @@ onBeforeUnmount(() => {
       <Skills />
       <Contact />
     </main>
+    <div class="fixed top-0 left-0 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl animate-pulse" style="animation-duration: 4s"></div>
+    <div class="fixed bottom-0 right-0 w-96 h-96 bg-orange-500/20 rounded-full blur-3xl animate-pulse" style="animation-duration: 6s"></div>
   </div>
 </template>
 

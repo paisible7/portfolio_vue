@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ExternalLink, Github } from 'lucide-vue-next'
+
 const projects = [
   {
     title: 'E-Commerce Platform',
@@ -70,7 +72,7 @@ const projects = [
                 rel="noopener noreferrer"
                 class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center hover:bg-white/30 transition-colors"
               >
-                <span class="text-sm">GH</span>
+                <Github class="w-6 h-6" />
               </a>
               <a
                 :href="project.links.demo"
@@ -78,7 +80,7 @@ const projects = [
                 rel="noopener noreferrer"
                 class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center hover:bg-white/30 transition-colors"
               >
-                <span class="text-sm">↗</span>
+                <ExternalLink class="w-6 h-6" />
               </a>
             </div>
           </div>

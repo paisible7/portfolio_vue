@@ -20,9 +20,13 @@ onMounted(() => {
   const codeSnippets = [
     'const', 'function', 'return', 'import', 'export',
     '=>', '{}', '()', '[]', 'async', 'await',
-    'useState', 'useEffect', 'React', 'TypeScript',
+    'useState', 'useEffect', 'VueJs', 'TypeScript',
+    'Flutter', 'Python', 'Photoshop', 'Django',
     '<div>', '</div>', 'class', 'onClick',
-    'map', 'filter', 'reduce', 'props', 'state'
+    'map', 'filter', 'Figma', 'props', 'state',
+    'while', 'for', 'input', 'return', 'push',
+    'git', 'pull', 'merge', 'tailwindcss', 'commit',
+    'Java', 'pull', 'JavaScript', 'Kotlin', 'Linux',
   ]
 
   class CodeParticle {

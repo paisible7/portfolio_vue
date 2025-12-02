@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ArrowDown, Github, Linkedin, Mail } from 'lucide-vue-next'
 
 const displayText = ref('')
 const fullText = 'Développeur Frontend'
@@ -31,13 +32,13 @@ onBeforeUnmount(() => {
           <div class="inline-block">
             <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-blue-500 to-orange-500 p-1 mb-6">
               <div class="w-full h-full rounded-full bg-black flex items-center justify-center">
-                <span class="text-5xl"></span>
+                <span class="text-5xl">👨‍💻</span>
               </div>
             </div>
           </div>
 
           <h1
-            class="text-6xl md:text-8xl bg-gradient-to-r from-blue-400 via-blue-300 to-orange-400 bg-clip-text p-4 text-transparent animate-pulse"
+            class="text-4xl sm:text-5xl md:text-8xl font-bold bg-gradient-to-r from-blue-400 via-blue-300 to-orange-400 bg-clip-text text-transparent animate-pulse pb-2"
             style="animation-duration: 3s"
           >
             Augustin KALONJI
@@ -57,11 +58,11 @@ onBeforeUnmount(() => {
           <div class="flex gap-4 justify-center pt-6">
             <a
               href="#contact"
-              class="relative px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-900 rounded-full overflow-hidden transition-transform hover:scale-105 group"
+              class="relative inline-flex items-center justify-center w-14 h-14 md:w-auto md:h-auto md:px-8 md:py-4 bg-gradient-to-r from-blue-500 to-orange-500 rounded-full overflow-hidden transition-transform hover:scale-105 group"
             >
-              <span class="relative z-10 flex items-center gap-2">
-                <span aria-hidden="true">✉</span>
-                Me contacter
+              <span class="relative z-10 flex items-center gap-2 font-medium text-white">
+                <Mail class="w-6 h-6 md:w-5 md:h-5" />
+                <span class="hidden md:inline whitespace-nowrap">Me contacter</span>
               </span>
               <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity" />
             </a>
@@ -73,7 +74,7 @@ onBeforeUnmount(() => {
                 rel="noopener noreferrer"
                 class="w-14 h-14 backdrop-blur-md bg-white/10 border border-white/20 rounded-full flex items-center justify-center hover:bg-white/20 transition-all hover:scale-110"
               >
-                <span class="text-sm">GitHub</span>
+                <Github class="w-6 h-6" />
               </a>
               <a
                 href="https://linkedin.com"
@@ -81,13 +82,13 @@ onBeforeUnmount(() => {
                 rel="noopener noreferrer"
                 class="w-14 h-14 backdrop-blur-md bg-white/10 border border-white/20 rounded-full flex items-center justify-center hover:bg-white/20 transition-all hover:scale-110"
               >
-                <span class="text-sm">in</span>
+                <Linkedin class="w-6 h-6" />
               </a>
             </div>
           </div>
 
           <div class="pt-12 animate-bounce">
-            <div class="w-8 h-8 mx-auto text-blue-400 text-center">↓</div>
+            <ArrowDown class="w-8 h-8 mx-auto text-blue-400" />
           </div>
         </div>
       </div>
