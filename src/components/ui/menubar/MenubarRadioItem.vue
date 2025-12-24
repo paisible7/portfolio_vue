@@ -1,17 +1,25 @@
 <script setup lang="ts">
-import { MenubarRadioItem, MenubarItemIndicator } from 'radix-vue'
+import { MenubarRadioItem, MenubarItemIndicator, type MenubarRadioItemProps } from 'radix-vue'
 import { Circle } from 'lucide-vue-next'
-const props = defineProps<{ class?: string }>()
+import { computed } from 'vue'
+
+const props = defineProps<MenubarRadioItemProps & { class?: string }>()
+
+const delegatedProps = computed(() => {
+  const { class: _, ...delegated } = props
+  return delegated
+})
 </script>
 
 <template>
   <MenubarRadioItem
+    v-bind="delegatedProps"
     data-slot="menubar-radio-item"
     :class="[
       'relative flex cursor-default items-center gap-2 rounded-xs py-1.5 pr-2 pl-8 text-sm outline-hidden select-none',
       'focus:bg-accent focus:text-accent-foreground',
       'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
-      '[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*=\'size-\'])]:size-4',
+      `[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4`,
       props.class,
     ]"
   >

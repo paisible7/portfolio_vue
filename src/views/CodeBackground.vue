@@ -38,9 +38,9 @@ onMounted(() => {
     fontSize: number
 
     constructor() {
-      this.x = Math.random() * canvas.width
-      this.y = Math.random() * canvas.height
-      this.text = codeSnippets[Math.floor(Math.random() * codeSnippets.length)]
+      this.x = Math.random() * (canvas?.width ?? 0)
+      this.y = Math.random() * (canvas?.height ?? 0)
+      this.text = codeSnippets[Math.floor(Math.random() * codeSnippets.length)] ?? ''
       this.speed = 0.2 + Math.random() * 0.5
       this.opacity = 0.1 + Math.random() * 0.3
       this.fontSize = 12 + Math.random() * 8
@@ -48,9 +48,9 @@ onMounted(() => {
 
     update() {
       this.y += this.speed
-      if (this.y > canvas.height) {
+      if (this.y > (canvas?.height ?? 0)) {
         this.y = -20
-        this.x = Math.random() * canvas.width
+        this.x = Math.random() * (canvas?.width ?? 0)
       }
     }
 

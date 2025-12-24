@@ -1,10 +1,17 @@
 <script setup lang="ts">
-import { TabsContent } from 'radix-vue'
-const props = defineProps<{ class?: string }>()
+import { TabsContent, type TabsContentProps } from 'radix-vue'
+import { computed } from 'vue'
+
+const props = defineProps<TabsContentProps & { class?: string }>()
+
+const delegatedProps = computed(() => {
+  const { class: _, ...delegated } = props
+  return delegated
+})
 </script>
 
 <template>
-  <TabsContent data-slot="tabs-content" :class="['flex-1 outline-none', props.class]">
+  <TabsContent v-bind="delegatedProps" data-slot="tabs-content" :class="['flex-1 outline-none', props.class]">
     <slot />
   </TabsContent>
 </template>

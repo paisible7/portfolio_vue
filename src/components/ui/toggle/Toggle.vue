@@ -1,10 +1,7 @@
-<script setup lang="ts">
-import { type HTMLAttributes, computed } from 'vue'
-import { Toggle, type ToggleEmits, type ToggleProps, useForwardPropsEmits } from 'radix-vue'
+<script lang="ts">
 import { cva, type VariantProps } from 'class-variance-authority'
-import { cn } from '@/components/ui/utils'
 
-const toggleVariants = cva(
+export const toggleVariants = cva(
   'inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors hover:bg-muted hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground',
   {
     variants: {
@@ -26,11 +23,20 @@ const toggleVariants = cva(
   },
 )
 
-type ToggleVariants = VariantProps<typeof toggleVariants>
+export type ToggleVariants = VariantProps<typeof toggleVariants>
+</script>
+
+<script setup lang="ts">
+import { type HTMLAttributes, computed } from 'vue'
+import { Toggle, type ToggleEmits, type ToggleProps, useForwardPropsEmits } from 'radix-vue'
+import { cn } from '@/components/ui/utils'
+
+type Variant = 'default' | 'outline'
+type Size = 'default' | 'sm' | 'lg'
 
 interface Props extends ToggleProps {
-  variant?: ToggleVariants['variant']
-  size?: ToggleVariants['size']
+  variant?: Variant
+  size?: Size
   class?: HTMLAttributes['class']
 }
 
@@ -58,7 +64,3 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
     <slot />
   </Toggle>
 </template>
-
-<script lang="ts">
-export { toggleVariants }
-</script>

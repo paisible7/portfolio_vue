@@ -4,12 +4,18 @@ import { PaginationListItem, type PaginationListItemProps } from 'radix-vue'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/components/ui/utils'
 
-const props = withDefaults(defineProps<PaginationListItemProps & { class?: HTMLAttributes['class'] }>(), {
+interface Props extends PaginationListItemProps {
+  class?: HTMLAttributes['class']
+  isActive?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
   asChild: true,
+  isActive: false,
 })
 
 const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props
+  const { class: _, isActive, ...delegated } = props
   return delegated
 })
 </script>
@@ -18,7 +24,7 @@ const delegatedProps = computed(() => {
   <PaginationListItem v-bind="delegatedProps">
     <Button
       :class="cn('h-9 w-9 p-0', props.class)"
-      :variant="isSelected ? 'outline' : 'ghost'"
+      :variant="isActive ? 'outline' : 'ghost'"
     >
       <slot />
     </Button>

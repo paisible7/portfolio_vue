@@ -1,11 +1,19 @@
 <script setup lang="ts">
-import { SelectItem, SelectItemText, SelectItemIndicator } from 'radix-vue'
+import { SelectItem, SelectItemText, SelectItemIndicator, type SelectItemProps } from 'radix-vue'
 import { Check } from 'lucide-vue-next'
-const props = defineProps<{ class?: string }>()
+import { computed } from 'vue'
+
+const props = defineProps<SelectItemProps & { class?: string }>()
+
+const delegatedProps = computed(() => {
+  const { class: _, ...delegated } = props
+  return delegated
+})
 </script>
 
 <template>
   <SelectItem
+    v-bind="delegatedProps"
     data-slot="select-item"
     :class="[
       'relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none',
