@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Alert, AlertTitle, AlertDescription } from '@/components/ui/Alert.vue'
-import { Skeleton } from '@/components/ui/Skeleton.vue'
+import Alert from '@/components/ui/Alert.vue'
+import AlertTitle from '@/components/ui/AlertTitle.vue'
+import AlertDescription from '@/components/ui/AlertDescription.vue'
+import Skeleton from '@/components/ui/Skeleton.vue'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
-import { AspectRatio } from '@/components/ui/AspectRatio.vue'
+import AspectRatio from '@/components/ui/AspectRatio.vue'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -48,7 +50,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/Table.vue'
+} from '@/components/ui/table'
 import ImageWithFallback from '@/components/figma/ImageWithFallback.vue'
 import { Button } from '@/components/ui/button'
 
@@ -217,13 +219,13 @@ const isOpen = ref(false)
             <PaginationPrevious href="#" />
           </PaginationItem>
           <PaginationItem>
-            <PaginationLink href="#">1</PaginationLink>
+            <PaginationLink :value="1">1</PaginationLink>
           </PaginationItem>
           <PaginationItem>
-            <PaginationLink href="#" is-active>2</PaginationLink>
+            <PaginationLink :value="2">2</PaginationLink>
           </PaginationItem>
           <PaginationItem>
-            <PaginationLink href="#">3</PaginationLink>
+            <PaginationLink :value="3">3</PaginationLink>
           </PaginationItem>
           <PaginationItem>
             <PaginationEllipsis />
