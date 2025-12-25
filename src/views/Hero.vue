@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-vue-next'
+import moiImg from '@/assets/images/perso/moi.png'
 
 const displayText = ref('')
 const fullText = 'Développeur Frontend'
@@ -31,9 +32,7 @@ onBeforeUnmount(() => {
         <div class="text-center space-y-6">
           <div class="inline-block">
             <div class="w-32 h-32 mx-auto rounded-full bg-blue-600 p-1 mb-6">
-              <div class="w-full h-full rounded-full bg-black flex items-center justify-center">
-                <span class="text-5xl">👨‍💻</span>
-              </div>
+              <img :src="moiImg" alt="Photo de profil" class="w-full h-full rounded-full object-cover" />
             </div>
           </div>
 

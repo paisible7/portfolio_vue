@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Code2, Lightbulb, Rocket, Zap } from 'lucide-vue-next'
+import moi1Img from '@/assets/images/perso/moi1.jpg'
 
 const highlights = [
   {
@@ -35,7 +36,12 @@ const highlights = [
         <div class="h-1 w-24 bg-blue-500 mx-auto rounded-full" />
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8 mb-12">
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+        <!-- Photo personnelle -->
+        <div class="backdrop-blur-lg bg-white/5 border border-white/10 rounded-3xl p-4 shadow-2xl flex items-center justify-center">
+          <img :src="moi1Img" alt="Photo personnelle" class="w-full h-full object-cover rounded-2xl max-h-80" />
+        </div>
+
         <div class="backdrop-blur-lg bg-white/5 border border-white/10 rounded-3xl p-8 shadow-2xl">
           <h3 class="text-2xl text-blue-400 mb-4">Mon Parcours</h3>
           <p class="text-white/80 leading-relaxed mb-4">
