@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Menu, X } from 'lucide-vue-next'
+import { Menu, X, Download } from 'lucide-vue-next'
 import ImageWithFallback from '@/components/figma/ImageWithFallback.vue'
 
 const props = defineProps<{
@@ -41,7 +41,7 @@ const scrollToSection = (id: typeof navItems[number]['id']) => {
           </div>
 
           <!-- Desktop Navigation -->
-          <div class="hidden md:flex gap-8">
+          <div class="hidden md:flex items-center gap-6 flex-1 justify-center">
             <button
               v-for="item in navItems"
               :key="item.id"
@@ -52,10 +52,20 @@ const scrollToSection = (id: typeof navItems[number]['id']) => {
               {{ item.label }}
               <span
                 v-if="isActive(item.id)"
-                class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-500"
+                class="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-blue-500 rounded-full"
               />
             </button>
           </div>
+
+          <!-- CV Download Button -->
+          <a
+            href="/cv.pdf"
+            download
+            class="hidden md:flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-white text-sm transition-colors"
+          >
+            <Download class="w-4 h-4" />
+            <span>Télécharger CV</span>
+          </a>
 
           <!-- Mobile Menu Button -->
           <button
@@ -79,6 +89,14 @@ const scrollToSection = (id: typeof navItems[number]['id']) => {
           >
             {{ item.label }}
           </button>
+          <a
+            href="/cv.pdf"
+            download
+            class="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-white text-sm transition-colors mt-2"
+          >
+            <Download class="w-4 h-4" />
+            <span>Télécharger CV</span>
+          </a>
         </div>
       </div>
     </div>

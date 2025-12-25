@@ -28,23 +28,23 @@ onBeforeUnmount(() => {
 <template>
   <section id="home" class="min-h-screen flex items-center justify-center px-6 pt-20">
     <div class="max-w-6xl w-full">
-      <div class="backdrop-blur-lg bg-white/5 border border-white/10 rounded-3xl p-12 shadow-2xl">
-        <div class="text-center space-y-6">
+      <div class="backdrop-blur-lg bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 shadow-2xl">
+        <div class="text-center space-y-4">
           <div class="inline-block">
-            <div class="w-32 h-32 mx-auto rounded-full bg-blue-600 p-1 mb-6">
-              <img :src="moiImg" alt="Photo de profil" class="w-full h-full rounded-full object-cover" />
+            <div class="w-40 h-40 md:w-48 md:h-48 mx-auto rounded-full mb-4">
+              <img :src="moiImg" alt="Photo de profil" class="w-full h-full rounded-full object-cover profile-shadow" />
             </div>
           </div>
 
           <h1
-            class="text-4xl sm:text-5xl md:text-8xl font-bold text-blue-400 animate-pulse pb-2"
+            class="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-400 animate-pulse pb-1"
             style="animation-duration: 3s"
           >
             Augustin KALONJI
           </h1>
 
-          <div class="h-12 flex items-center justify-center">
-            <h2 class="text-2xl md:text-3xl text-blue-300">
+          <div class="h-10 flex items-center justify-center">
+            <h2 class="text-xl md:text-2xl text-blue-300">
               {{ displayText }}
               <span class="animate-pulse">|</span>
             </h2>
@@ -96,4 +96,7 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
+.profile-shadow {
+  box-shadow: 0 0 40px 10px rgba(59, 130, 246, 0.4);
+}
 </style>
