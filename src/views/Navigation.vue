@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Menu, X, Download } from 'lucide-vue-next'
-import ImageWithFallback from '@/components/figma/ImageWithFallback.vue'
+import { Menu, X, Download, Loader2 } from 'lucide-vue-next'
+import cvFile from '@/assets/docs/CV.pdf'
 
 const props = defineProps<{
   activeSection: 'home' | 'about' | 'projects' | 'skills' | 'contact'
 }>()
 
 const isOpen = ref(false)
+const isDownloading = ref(false)
 
 const navItems = [
   { id: 'home', label: 'Accueil' },
@@ -25,6 +26,25 @@ const scrollToSection = (id: typeof navItems[number]['id']) => {
     el.scrollIntoView({ behavior: 'smooth' })
     isOpen.value = false
   }
+}
+
+const handleDownload = async () => {
+  if (isDownloading.value) return
+  
+  isDownloading.value = true
+  
+  // Simulation du délai de 3 secondes
+  await new Promise(resolve => setTimeout(resolve, 3000))
+  
+  // Déclenchement du téléchargement
+  const link = document.createElement('a')
+  link.href = cvFile
+  link.download = 'CV_Augustin_Kalonji.pdf'
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+  
+  isDownloading.value = false
 }
 </script>
 
@@ -58,14 +78,15 @@ const scrollToSection = (id: typeof navItems[number]['id']) => {
           </div>
 
           <!-- CV Download Button -->
-          <a
-            href="/cv.pdf"
-            download
-            class="hidden md:flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-white text-sm transition-colors"
+          <button
+            @click="handleDownload"
+            :disabled="isDownloading"
+            class="hidden md:flex items-center gap-2 px-4 py-2 backdrop-blur-md bg-white/10 border border-white/20 hover:bg-white/20 rounded-lg text-white text-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <Download class="w-4 h-4" />
-            <span>Télécharger CV</span>
-          </a>
+            <Loader2 v-if="isDownloading" class="w-4 h-4 animate-spin" />
+            <Download v-else class="w-4 h-4" />
+            <span>{{ isDownloading ? 'Téléchargement...' : 'Télécharger CV' }}</span>
+          </button>
 
           <!-- Mobile Menu Button -->
           <button
@@ -89,14 +110,15 @@ const scrollToSection = (id: typeof navItems[number]['id']) => {
           >
             {{ item.label }}
           </button>
-          <a
-            href="/cv.pdf"
-            download
-            class="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-white text-sm transition-colors mt-2"
+          <button
+            @click="handleDownload"
+            :disabled="isDownloading"
+            class="flex items-center gap-2 px-4 py-2 backdrop-blur-md bg-white/10 border border-white/20 hover:bg-white/20 rounded-lg text-white text-sm transition-all mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <Download class="w-4 h-4" />
-            <span>Télécharger CV</span>
-          </a>
+            <Loader2 v-if="isDownloading" class="w-4 h-4 animate-spin" />
+            <Download v-else class="w-4 h-4" />
+            <span>{{ isDownloading ? 'Téléchargement...' : 'Télécharger CV' }}</span>
+          </button>
         </div>
       </div>
     </div>

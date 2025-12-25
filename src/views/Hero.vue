@@ -31,7 +31,7 @@ onBeforeUnmount(() => {
       <div class="backdrop-blur-lg bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 shadow-2xl">
         <div class="text-center space-y-4">
           <div class="inline-block">
-            <div class="w-40 h-40 md:w-48 md:h-48 mx-auto rounded-full mb-4">
+            <div class="w-40 h-40 md:w-48 md:h-48 mx-auto rounded-full mb-4 animate-float">
               <img :src="moiImg" alt="Photo de profil" class="w-full h-full rounded-full object-cover profile-shadow" />
             </div>
           </div>
@@ -57,7 +57,7 @@ onBeforeUnmount(() => {
           <div class="flex gap-4 justify-center pt-6">
             <a
               href="#contact"
-              class="relative inline-flex items-center justify-center w-14 h-14 md:w-auto md:h-auto md:px-8 md:py-4 bg-blue-600 rounded-full overflow-hidden transition-transform hover:scale-105 group"
+              class="relative inline-flex items-center justify-center w-14 h-14 md:w-auto md:h-auto md:px-8 md:py-4 bg-blue-600 rounded-lg overflow-hidden transition-transform hover:scale-105 group"
             >
               <span class="relative z-10 flex items-center gap-2 font-medium text-white">
                 <Mail class="w-6 h-6 md:w-5 md:h-5" />
@@ -98,5 +98,28 @@ onBeforeUnmount(() => {
 <style scoped>
 .profile-shadow {
   box-shadow: 0 0 40px 10px rgba(59, 130, 246, 0.4);
+  animation: float-shadow 6s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes float-shadow {
+  0%, 100% {
+    box-shadow: 0 0 40px 10px rgba(59, 130, 246, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 60px 15px rgba(59, 130, 246, 0.2);
+  }
 }
 </style>
