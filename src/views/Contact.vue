@@ -30,10 +30,10 @@ const contactInfo = [
   <section id="contact" class="min-h-screen flex items-center justify-center px-6 py-20">
     <div class="max-w-6xl w-full">
       <div class="text-center mb-16">
-        <h2 class="text-5xl md:text-6xl bg-gradient-to-r from-blue-400 to-orange-400 bg-clip-text text-transparent mb-4">
+        <h2 class="text-5xl md:text-6xl text-blue-400 mb-4">
           Contact
         </h2>
-        <div class="h-1 w-24 bg-gradient-to-r from-blue-500 to-orange-500 mx-auto rounded-full" />
+        <div class="h-1 w-24 bg-blue-500 mx-auto rounded-full" />
       </div>
 
       <div class="grid md:grid-cols-2 gap-8">
@@ -103,13 +103,13 @@ const contactInfo = [
 
             <button
               type="submit"
-              class="w-full relative px-8 py-4 bg-gradient-to-r from-blue-500 to-orange-500 rounded-xl overflow-hidden transition-transform hover:scale-105 group"
+              class="w-full relative px-8 py-4 bg-blue-600 rounded-xl overflow-hidden transition-transform hover:scale-105 group"
             >
               <span class="relative z-10 flex items-center justify-center gap-2">
                 <Send class="w-5 h-5" />
                 Envoyer le message
               </span>
-              <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div class="absolute inset-0 bg-blue-700 opacity-0 group-hover:opacity-100 transition-opacity" />
             </button>
           </form>
         </div>

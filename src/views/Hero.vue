@@ -30,7 +30,7 @@ onBeforeUnmount(() => {
       <div class="backdrop-blur-lg bg-white/5 border border-white/10 rounded-3xl p-12 shadow-2xl">
         <div class="text-center space-y-6">
           <div class="inline-block">
-            <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-blue-500 to-orange-500 p-1 mb-6">
+            <div class="w-32 h-32 mx-auto rounded-full bg-blue-600 p-1 mb-6">
               <div class="w-full h-full rounded-full bg-black flex items-center justify-center">
                 <span class="text-5xl">👨‍💻</span>
               </div>
@@ -38,7 +38,7 @@ onBeforeUnmount(() => {
           </div>
 
           <h1
-            class="text-4xl sm:text-5xl md:text-8xl font-bold bg-gradient-to-r from-blue-400 via-blue-300 to-orange-400 bg-clip-text text-transparent animate-pulse pb-2"
+            class="text-4xl sm:text-5xl md:text-8xl font-bold text-blue-400 animate-pulse pb-2"
             style="animation-duration: 3s"
           >
             Augustin KALONJI
@@ -58,13 +58,13 @@ onBeforeUnmount(() => {
           <div class="flex gap-4 justify-center pt-6">
             <a
               href="#contact"
-              class="relative inline-flex items-center justify-center w-14 h-14 md:w-auto md:h-auto md:px-8 md:py-4 bg-gradient-to-r from-blue-500 to-orange-500 rounded-full overflow-hidden transition-transform hover:scale-105 group"
+              class="relative inline-flex items-center justify-center w-14 h-14 md:w-auto md:h-auto md:px-8 md:py-4 bg-blue-600 rounded-full overflow-hidden transition-transform hover:scale-105 group"
             >
               <span class="relative z-10 flex items-center gap-2 font-medium text-white">
                 <Mail class="w-6 h-6 md:w-5 md:h-5" />
                 <span class="hidden md:inline whitespace-nowrap">Me contacter</span>
               </span>
-              <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div class="absolute inset-0 bg-blue-700 opacity-0 group-hover:opacity-100 transition-opacity" />
             </a>
 
             <div class="flex gap-3">

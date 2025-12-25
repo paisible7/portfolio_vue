@@ -51,10 +51,10 @@ const projects = [
   <section id="projects" class="min-h-screen flex items-center justify-center px-6 py-20">
     <div class="max-w-7xl w-full">
       <div class="text-center mb-16">
-        <h2 class="text-5xl md:text-6xl bg-gradient-to-r from-blue-400 to-orange-400 bg-clip-text text-transparent mb-4">
+        <h2 class="text-5xl md:text-6xl text-blue-400 mb-4">
           Mes Projets
         </h2>
-        <div class="h-1 w-24 bg-gradient-to-r from-blue-500 to-orange-500 mx-auto rounded-full" />
+        <div class="h-1 w-24 bg-blue-500 mx-auto rounded-full" />
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

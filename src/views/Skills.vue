@@ -1,39 +1,53 @@
 <script setup lang="ts">
+// Import skill images
+import vuejsImg from '@/assets/images/skill/vuejs.png'
+import tailwindImg from '@/assets/images/skill/tailwind.png'
+import javascriptImg from '@/assets/images/skill/javascript.png'
+import bootstrapImg from '@/assets/images/skill/bootstrap.png'
+import githubImg from '@/assets/images/skill/github.png'
+import figmaImg from '@/assets/images/skill/figma.png'
+import flutterImg from '@/assets/images/skill/flutter.png'
+import kotlinImg from '@/assets/images/skill/kotlin.png'
+import firebaseImg from '@/assets/images/skill/firebase.png'
+import supabaseImg from '@/assets/images/skill/supabase.png'
+import djangoImg from '@/assets/images/skill/django.png'
+import cImg from '@/assets/images/skill/c.png'
+import adobePSImg from '@/assets/images/skill/adobePS.png'
+import canvaImg from '@/assets/images/skill/canva.png'
+
 const skillCategories = [
   {
     category: 'Frontend',
     skills: [
-      { name: 'React / Next.js', level: 95 },
-      { name: 'TypeScript', level: 90 },
-      { name: 'Tailwind CSS', level: 95 },
-      { name: 'Vue.js', level: 85 },
+      { name: 'Vue.js', icon: vuejsImg },
+      { name: 'JavaScript', icon: javascriptImg },
+      { name: 'Tailwind CSS', icon: tailwindImg },
+      { name: 'Bootstrap', icon: bootstrapImg },
     ],
   },
   {
-    category: 'Outils & Build',
+    category: 'Mobile',
     skills: [
-      { name: 'Git / GitHub', level: 90 },
-      { name: 'Vite / Webpack', level: 85 },
-      { name: 'Jest / Testing Library', level: 80 },
-      { name: 'Docker', level: 75 },
-    ],
-  },
-  {
-    category: 'Design & UX',
-    skills: [
-      { name: 'Figma', level: 85 },
-      { name: 'Responsive Design', level: 95 },
-      { name: 'Animations CSS/JS', level: 90 },
-      { name: 'Accessibilité', level: 85 },
+      { name: 'Flutter', icon: flutterImg },
+      { name: 'Kotlin', icon: kotlinImg },
     ],
   },
   {
     category: 'Backend & APIs',
     skills: [
-      { name: 'Node.js / Express', level: 80 },
-      { name: 'REST / GraphQL', level: 85 },
-      { name: 'Firebase', level: 80 },
-      { name: 'PostgreSQL', level: 75 },
+      { name: 'Firebase', icon: firebaseImg },
+      { name: 'Supabase', icon: supabaseImg },
+      { name: 'Django', icon: djangoImg },
+      { name: 'C', icon: cImg },
+    ],
+  },
+  {
+    category: 'Outils & Design',
+    skills: [
+      { name: 'GitHub', icon: githubImg },
+      { name: 'Figma', icon: figmaImg },
+      { name: 'Photoshop', icon: adobePSImg },
+      { name: 'Canva', icon: canvaImg },
     ],
   },
 ] as const
@@ -43,10 +57,10 @@ const skillCategories = [
   <section id="skills" class="min-h-screen flex items-center justify-center px-6 py-20">
     <div class="max-w-6xl w-full">
       <div class="text-center mb-16">
-        <h2 class="text-5xl md:text-6xl bg-gradient-to-r from-blue-400 to-orange-400 bg-clip-text text-transparent mb-4">
+        <h2 class="text-5xl md:text-6xl text-blue-400 mb-4">
           Compétences
         </h2>
-        <div class="h-1 w-24 bg-gradient-to-r from-blue-500 to-orange-500 mx-auto rounded-full" />
+        <div class="h-1 w-24 bg-blue-500 mx-auto rounded-full" />
       </div>
 
       <div class="grid md:grid-cols-2 gap-8">
@@ -56,18 +70,14 @@ const skillCategories = [
           class="backdrop-blur-lg bg-white/5 border border-white/10 rounded-3xl p-8 shadow-2xl hover:bg-white/10 transition-all duration-300"
         >
           <h3 class="text-2xl text-blue-400 mb-6">{{ category.category }}</h3>
-          <div class="space-y-6">
-            <div v-for="(skill, skillIndex) in category.skills" :key="skillIndex">
-              <div class="flex justify-between mb-2">
-                <span class="text-white/90">{{ skill.name }}</span>
-                <span class="text-orange-400">{{ skill.level }}%</span>
-              </div>
-              <div class="h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-blue-500 to-orange-500 rounded-full progress-bar"
-                  :style="{ width: skill.level + '%', animationDelay: (skillIndex * 0.1) + 's' }"
-                />
-              </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            <div
+              v-for="(skill, skillIndex) in category.skills"
+              :key="skillIndex"
+              class="flex flex-col items-center justify-center p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:scale-105 transition-all duration-300"
+            >
+              <img :src="skill.icon" :alt="skill.name" class="w-12 h-12 object-contain mb-3" />
+              <span class="text-white/90 text-sm text-center">{{ skill.name }}</span>
             </div>
           </div>
         </div>
@@ -77,14 +87,4 @@ const skillCategories = [
 </template>
 
 <style scoped>
-.progress-bar {
-  width: 0%;
-  animation: slideIn 1s ease-out both;
-}
-
-@keyframes slideIn {
-  from { 
-    width: 0%; 
-  }
-}
 </style>

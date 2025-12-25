@@ -34,7 +34,7 @@ const scrollToSection = (id: typeof navItems[number]['id']) => {
       <div class="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl px-6 py-4 shadow-2xl">
         <div class="flex items-center justify-between">
           <div class="text-xl tracking-wider">
-            <span class="bg-gradient-to-r from-blue-400 to-orange-400 bg-clip-text text-transparent">
+            <span class="">
               <!-- Logo / Marque -->
               <img src="/logoMP.png" class="w-10"/>
             </span>
@@ -52,7 +52,7 @@ const scrollToSection = (id: typeof navItems[number]['id']) => {
               {{ item.label }}
               <span
                 v-if="isActive(item.id)"
-                class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-orange-500"
+                class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-500"
               />
             </button>
           </div>
