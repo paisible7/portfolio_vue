@@ -86,9 +86,13 @@ onBeforeUnmount(() => {
             </div>
           </div>
 
-          <div class="pt-12 animate-bounce">
+          <a 
+            href="#about" 
+            class="pt-12 block animate-bounce cursor-pointer hover:text-blue-300 transition-colors"
+            aria-label="Défiler vers la section À propos"
+          >
             <ArrowDown class="w-8 h-8 mx-auto text-blue-400" />
-          </div>
+          </a>
         </div>
       </div>
     </div>
