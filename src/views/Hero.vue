@@ -26,12 +26,12 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <section id="home" class="min-h-screen flex items-center justify-center px-6 pt-20">
+  <section id="home" class="min-h-screen flex items-center justify-center px-4 md:px-6 pt-20">
     <div class="max-w-6xl w-full">
-      <div class="backdrop-blur-lg bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 shadow-2xl">
+      <div class="backdrop-blur-lg bg-white/5 border border-white/10 rounded-3xl pt-10 pb-6 px-4 sm:pt-12 sm:pb-8 sm:px-6 md:pt-16 md:pb-10 md:px-8 shadow-2xl">
         <div class="text-center space-y-4">
           <div class="inline-block">
-            <div class="w-40 h-40 md:w-48 md:h-48 mx-auto rounded-full mb-4 animate-float">
+            <div class="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mx-auto rounded-full mt-4 mb-4 animate-float">
               <img :src="moiImg" alt="Photo de profil" class="w-full h-full rounded-full object-cover profile-shadow" />
             </div>
           </div>
@@ -57,7 +57,7 @@ onBeforeUnmount(() => {
           <div class="flex gap-4 justify-center pt-6">
             <a
               href="#contact"
-              class="relative inline-flex items-center justify-center w-14 h-14 md:w-auto md:h-auto md:px-8 md:py-4 bg-blue-600 rounded-lg overflow-hidden transition-transform hover:scale-105 group"
+              class="relative inline-flex items-center justify-center w-14 h-14 md:w-auto md:h-auto md:px-8 md:py-4 bg-blue-600 rounded-full md:rounded-lg overflow-hidden transition-transform hover:scale-105 group"
             >
               <span class="relative z-10 flex items-center gap-2 font-medium text-white">
                 <Mail class="w-6 h-6 md:w-5 md:h-5" />
