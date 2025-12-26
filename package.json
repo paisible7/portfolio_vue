@@ -16,6 +16,7 @@
     "format": "prettier --write --experimental-cli src/"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@tailwindcss/vite": "^4.1.17",
     "class-variance-authority": "^0.7.1",
     "lucide-vue-next": "^0.555.0",

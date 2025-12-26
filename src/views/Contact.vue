@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
-import { Mail, MapPin, Phone, Send, Github, Linkedin, MessageSquare } from 'lucide-vue-next'
+import { ref, reactive } from 'vue'
+import { Mail, MapPin, Phone, Send, Github, Linkedin, MessageSquare, Loader2 } from 'lucide-vue-next'
 import { SOCIAL_LINKS } from '@/config/links'
+import { sendEmail } from '@/services/emailService'
 
 const formData = reactive({
   name: '',
@@ -9,15 +10,29 @@ const formData = reactive({
   message: '',
 })
 
-const handleSubmit = (e: Event) => {
+const isLoading = ref(false)
+
+const handleSubmit = async (e: Event) => {
   e.preventDefault()
-  // Gestion de soumission
-  // eslint-disable-next-line no-console
-  console.log('Form submitted:', { ...formData })
-  alert('Message envoyé !')
-  formData.name = ''
-  formData.email = ''
-  formData.message = ''
+  if (isLoading.value) return
+
+  isLoading.value = true
+  
+  const result = await sendEmail({
+    name: formData.name,
+    email: formData.email,
+    message: formData.message
+  })
+
+  alert(result.message)
+  
+  if (result.success) {
+    formData.name = ''
+    formData.email = ''
+    formData.message = ''
+  }
+  
+  isLoading.value = false
 }
 
 const contactInfo = [
@@ -111,11 +126,13 @@ const contactInfo = [
 
             <button
               type="submit"
-              class="w-full relative px-8 py-4 bg-blue-600 rounded-xl overflow-hidden transition-transform hover:scale-105 group"
+              :disabled="isLoading"
+              class="w-full relative px-8 py-4 bg-blue-600 rounded-xl overflow-hidden transition-transform hover:scale-105 group disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
               <span class="relative z-10 flex items-center justify-center gap-2">
-                <Send class="w-5 h-5" />
-                Envoyer le message
+                <Loader2 v-if="isLoading" class="w-5 h-5 animate-spin" />
+                <Send v-else class="w-5 h-5" />
+                {{ isLoading ? 'Envoi en cours...' : 'Envoyer le message' }}
               </span>
               <div class="absolute inset-0 bg-blue-700 opacity-0 group-hover:opacity-100 transition-opacity" />
             </button>
