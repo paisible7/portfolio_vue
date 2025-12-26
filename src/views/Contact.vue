@@ -25,7 +25,7 @@ const contactInfo = [
   { icon: MessageSquare, label: 'WhatsApp', value: '+243 992 142 932', link: 'https://wa.me/243992142932' },
   { icon: Github, label: 'GitHub', value: 'Augustin_Kalonji', link: 'https://github.com/paisible7' },
   { icon: Linkedin, label: 'LinkedIn', value: 'Augustin Kalonji', link: 'https://www.linkedin.com/in/kalonji-mwinshi-augustin-73721727a' },
-  { icon: MapPin, label: 'Localisation', value: 'Lubumbashi, RDCongo' },
+  { icon: MapPin, label: 'Localisation', value: 'Lubumbashi, RDCongo', link: undefined },
 ] as const
 </script>
 
