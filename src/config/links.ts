@@ -1,20 +1,5 @@
-/**
- * Configuration centralisée des liens externes du portfolio
- * ============================================================
- * Ce fichier centralise tous les liens vers vos réseaux sociaux,
- * vos projets GitHub et les utilitaires de génération d'URLs.
- */
-
-// ============================================================
-// CONFIGURATION DE BASE
-// ============================================================
-
 const GITHUB_USERNAME = 'paisible7'
 const LINKEDIN_USERNAME = 'kalonji-mwinshi-augustin-73721727a'
-
-// ============================================================
-// LIENS SOCIAUX
-// ============================================================
 
 export const SOCIAL_LINKS = {
   GITHUB: `https://github.com/${GITHUB_USERNAME}`,
@@ -24,18 +9,9 @@ export const SOCIAL_LINKS = {
   PHONE: 'tel:+243992142932'
 }
 
-// ============================================================
-// ROUTES GITHUB
-// ============================================================
-
 export const GITHUB_ROUTES = {
   REPOSITORIES: `${SOCIAL_LINKS.GITHUB}?tab=repositories`,
 }
-
-// ============================================================
-// PROJETS GITHUB
-// Chaque clé correspond à un projet avec son nom de dépôt
-// ============================================================
 
 export const PROJECT_REPOS = {
   ECOMMERCE: {
@@ -64,27 +40,12 @@ export const PROJECT_REPOS = {
   },
 }
 
-// ============================================================
-// UTILITAIRES GITHUB (Pour récupération dynamique des README)
-// ============================================================
-
 const GITHUB_RAW_BASE = `https://raw.githubusercontent.com/${GITHUB_USERNAME}`
 
-/**
- * Génère l'URL du fichier README brut d'un dépôt
- * @param repoName - Nom du dépôt (ex: 'portfolio_vue')
- * @param branch - Branche (par défaut: 'main')
- */
 export const getRawReadmeUrl = (repoName: string, branch = 'main') => {
   return `${GITHUB_RAW_BASE}/${repoName}/${branch}/README.md`
 }
 
-/**
- * Génère l'URL d'une image dans un dépôt GitHub
- * @param repoName - Nom du dépôt
- * @param imagePath - Chemin vers l'image (ex: 'screenshots/main.png')
- * @param branch - Branche (par défaut: 'main')
- */
 export const getGithubImageUrl = (repoName: string, imagePath: string, branch = 'main') => {
   return `${GITHUB_RAW_BASE}/${repoName}/${branch}/${imagePath}`
 }
