@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-vue-next'
+import { SOCIAL_LINKS } from '@/config/links'
 import moiImg from '@/assets/images/perso/moi.png'
 
 const displayText = ref('')
@@ -68,7 +69,7 @@ onBeforeUnmount(() => {
 
             <div class="flex gap-3">
               <a
-                href="https://github.com/paisible7"
+                :href="SOCIAL_LINKS.GITHUB"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="w-14 h-14 backdrop-blur-md bg-white/10 border border-white/20 rounded-full flex items-center justify-center hover:bg-white/20 transition-all hover:scale-110"
@@ -76,7 +77,7 @@ onBeforeUnmount(() => {
                 <Github class="w-6 h-6" />
               </a>
               <a
-                href="https://www.linkedin.com/in/kalonji-mwinshi-augustin-73721727a"
+                :href="SOCIAL_LINKS.LINKEDIN"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="w-14 h-14 backdrop-blur-md bg-white/10 border border-white/20 rounded-full flex items-center justify-center hover:bg-white/20 transition-all hover:scale-110"

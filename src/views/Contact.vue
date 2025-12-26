@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
 import { Mail, MapPin, Phone, Send, Github, Linkedin, MessageSquare } from 'lucide-vue-next'
+import { SOCIAL_LINKS } from '@/config/links'
 
 const formData = reactive({
   name: '',
@@ -20,11 +21,11 @@ const handleSubmit = (e: Event) => {
 }
 
 const contactInfo = [
-  { icon: Mail, label: 'Email', value: 'm.paisible7@gmail.com', link: 'mailto:m.paisible7@gmail.com' },
-  { icon: Phone, label: 'Téléphone', value: '+243 992 142 932', link: 'tel:+243992142932' },
-  { icon: MessageSquare, label: 'WhatsApp', value: '+243 992 142 932', link: 'https://wa.me/243992142932' },
-  { icon: Github, label: 'GitHub', value: 'Augustin_Kalonji', link: 'https://github.com/paisible7' },
-  { icon: Linkedin, label: 'LinkedIn', value: 'Augustin Kalonji', link: 'https://www.linkedin.com/in/kalonji-mwinshi-augustin-73721727a' },
+  { icon: Mail, label: 'Email', value: 'm.paisible7@gmail.com', link: SOCIAL_LINKS.EMAIL },
+  { icon: Phone, label: 'Téléphone', value: '+243 992 142 932', link: SOCIAL_LINKS.PHONE },
+  { icon: MessageSquare, label: 'WhatsApp', value: '+243 992 142 932', link: SOCIAL_LINKS.WHATSAPP },
+  { icon: Github, label: 'GitHub', value: 'Augustin_Kalonji', link: SOCIAL_LINKS.GITHUB },
+  { icon: Linkedin, label: 'LinkedIn', value: 'Augustin Kalonji', link: SOCIAL_LINKS.LINKEDIN },
   { icon: MapPin, label: 'Localisation', value: 'Lubumbashi, RDCongo', link: undefined },
 ] as const
 </script>
