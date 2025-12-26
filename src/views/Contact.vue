@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
-import { Mail, MapPin, Phone, Send } from 'lucide-vue-next'
+import { Mail, MapPin, Phone, Send, Github, Linkedin, MessageSquare } from 'lucide-vue-next'
 
 const formData = reactive({
   name: '',
@@ -20,8 +20,11 @@ const handleSubmit = (e: Event) => {
 }
 
 const contactInfo = [
-  { icon: Mail, label: 'Email', value: 'm.paisible7@gmail.com' },
-  { icon: Phone, label: 'Téléphone', value: '+243 992 142 932' },
+  { icon: Mail, label: 'Email', value: 'm.paisible7@gmail.com', link: 'mailto:m.paisible7@gmail.com' },
+  { icon: Phone, label: 'Téléphone', value: '+243 992 142 932', link: 'tel:+243992142932' },
+  { icon: MessageSquare, label: 'WhatsApp', value: '+243 992 142 932', link: 'https://wa.me/243992142932' },
+  { icon: Github, label: 'GitHub', value: 'Augustin_Kalonji', link: 'https://github.com/paisible7' },
+  { icon: Linkedin, label: 'LinkedIn', value: 'Augustin Kalonji', link: 'https://www.linkedin.com/in/kalonji-mwinshi-augustin-73721727a' },
   { icon: MapPin, label: 'Localisation', value: 'Lubumbashi, RDCongo' },
 ] as const
 </script>
@@ -36,7 +39,7 @@ const contactInfo = [
         <div class="h-1 w-24 bg-blue-500 mx-auto rounded-full" />
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8">
+      <div class="grid md:grid-cols-2 gap-8 items-start">
         <!-- Contact Info -->
         <div class="space-y-6">
           <div class="backdrop-blur-lg bg-white/5 border border-white/10 rounded-3xl p-8 shadow-2xl">
@@ -47,19 +50,23 @@ const contactInfo = [
             </p>
 
             <div class="space-y-4">
-              <div
+              <component
+                :is="item.link ? 'a' : 'div'"
                 v-for="(item, index) in contactInfo"
                 :key="index"
-                class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+                :href="item.link"
+                :target="item.link?.startsWith('http') ? '_blank' : undefined"
+                :rel="item.link?.startsWith('http') ? 'noopener noreferrer' : undefined"
+                class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group"
               >
-                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500/20 to-orange-500/20 border border-blue-500/30 flex items-center justify-center flex-shrink-0">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500/20 to-orange-500/20 border border-blue-500/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                   <component :is="item.icon" class="w-5 h-5 text-blue-400" />
                 </div>
                 <div>
                   <div class="text-white/60 text-sm">{{ item.label }}</div>
                   <div class="text-white">{{ item.value }}</div>
                 </div>
-              </div>
+              </component>
             </div>
           </div>
         </div>

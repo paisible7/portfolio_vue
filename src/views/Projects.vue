@@ -7,42 +7,42 @@ const projects = [
     description: 'Plateforme e-commerce complète avec panier, paiement et gestion des commandes.',
     tags: ['React', 'TypeScript', 'Tailwind', 'Stripe'],
     gradient: 'from-blue-600 to-blue-800',
-    links: { github: 'https://github.com', demo: 'https://demo.com' },
+    links: { github: 'https://github.com/paisible7', demo: 'https://demo.com' },
   },
   {
     title: 'Dashboard Analytics',
     description: 'Tableau de bord analytique avec graphiques interactifs et données en temps réel.',
     tags: ['Next.js', 'D3.js', 'WebSocket', 'Node.js'],
     gradient: 'from-orange-600 to-orange-800',
-    links: { github: 'https://github.com', demo: 'https://demo.com' },
+    links: { github: 'https://github.com/paisible7', demo: 'https://demo.com' },
   },
   {
     title: 'Social Media App',
     description: 'Application sociale avec système de posts, commentaires et notifications.',
     tags: ['React Native', 'Firebase', 'Redux', 'TypeScript'],
     gradient: 'from-blue-500 to-orange-500',
-    links: { github: 'https://github.com', demo: 'https://demo.com' },
+    links: { github: 'https://github.com/paisible7', demo: 'https://demo.com' },
   },
   {
     title: 'Portfolio Builder',
     description: 'Outil de création de portfolios avec éditeur drag-and-drop et templates.',
     tags: ['React', 'Tailwind', 'Vite', 'Zustand'],
     gradient: 'from-slate-700 to-blue-900',
-    links: { github: 'https://github.com', demo: 'https://demo.com' },
+    links: { github: 'https://github.com/paisible7', demo: 'https://demo.com' },
   },
   {
     title: 'Task Management',
     description: 'Application de gestion de tâches collaborative avec système de notifications.',
     tags: ['React', 'GraphQL', 'Apollo', 'Material-UI'],
     gradient: 'from-blue-700 to-slate-900',
-    links: { github: 'https://github.com', demo: 'https://demo.com' },
+    links: { github: 'https://github.com/paisible7', demo: 'https://demo.com' },
   },
   {
     title: 'Weather Dashboard',
     description: 'Dashboard météo avec prévisions détaillées et visualisations interactives.',
     tags: ['React', 'OpenWeather API', 'Recharts', 'Motion'],
     gradient: 'from-orange-500 to-yellow-600',
-    links: { github: 'https://github.com', demo: 'https://demo.com' },
+    links: { github: 'https://github.com/paisible7', demo: 'https://demo.com' },
   },
 ] as const
 </script>
@@ -101,6 +101,17 @@ const projects = [
             </div>
           </div>
         </div>
+      </div>
+      <div class="mt-16 text-center">
+        <a
+          href="https://github.com/paisible7"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-8 py-4 backdrop-blur-md bg-white/10 border border-white/20 hover:bg-white/20 rounded-xl text-white transition-all hover:scale-105 group"
+        >
+          <Github class="w-5 h-5 group-hover:rotate-12 transition-transform" />
+          <span>Voir plus sur GitHub</span>
+        </a>
       </div>
     </div>
   </section>

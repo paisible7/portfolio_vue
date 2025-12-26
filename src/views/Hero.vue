@@ -68,7 +68,7 @@ onBeforeUnmount(() => {
 
             <div class="flex gap-3">
               <a
-                href="https://github.com"
+                href="https://github.com/paisible7"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="w-14 h-14 backdrop-blur-md bg-white/10 border border-white/20 rounded-full flex items-center justify-center hover:bg-white/20 transition-all hover:scale-110"
@@ -76,7 +76,7 @@ onBeforeUnmount(() => {
                 <Github class="w-6 h-6" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/kalonji-mwinshi-augustin-73721727a"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="w-14 h-14 backdrop-blur-md bg-white/10 border border-white/20 rounded-full flex items-center justify-center hover:bg-white/20 transition-all hover:scale-110"
