@@ -14,9 +14,9 @@ export const GITHUB_ROUTES = {
 }
 
 export const PROJECT_REPOS = {
-  ECOMMERCE: {
-    name: 'ecommerce-platform',
-    url: `${SOCIAL_LINKS.GITHUB}/ecommerce-platform`,
+  SPOTIFY_CLONE: {
+    name: 'SPOTIFY_CLONE',
+    url: `${SOCIAL_LINKS.GITHUB}/SPOTIFY_CLONE`,
   },
   DASHBOARD: {
     name: 'analytics-dashboard',

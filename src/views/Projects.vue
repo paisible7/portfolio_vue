@@ -4,11 +4,11 @@ import { PROJECT_REPOS, GITHUB_ROUTES } from '@/config/links'
 
 const projects = [
   {
-    title: 'E-Commerce Platform',
-    description: 'Plateforme e-commerce complète avec panier, paiement et gestion des commandes.',
-    tags: ['React', 'TypeScript', 'Tailwind', 'Stripe'],
-    gradient: 'from-blue-600 to-blue-800',
-    links: { github: PROJECT_REPOS.ECOMMERCE.url, demo: 'https://demo.com' },
+    title: 'Spotify Clone',
+    description: 'Clone fonctionnel de Spotify développé avec Vue.js 3. Reproduit l\'interface principale, la navigation musicale et la gestion de playlists.',
+    tags: ['Vue.js 3', 'TypeScript', 'Tailwind CSS', 'Supabase'],
+    gradient: 'from-green-600 to-green-800',
+    links: { github: PROJECT_REPOS.SPOTIFY_CLONE.url, demo: '' },
   },
   {
     title: 'Dashboard Analytics',
