@@ -13,46 +13,20 @@ export const GITHUB_ROUTES = {
   REPOSITORIES: `${SOCIAL_LINKS.GITHUB}?tab=repositories`,
 }
 
-export const PROJECT_REPOS = {
-  SPOTIFY_CLONE: {
-    name: 'SPOTIFY_CLONE',
-    url: `${SOCIAL_LINKS.GITHUB}/SPOTIFY_CLONE`,
-    demo: 'https://spotify.paisible.tech',
-    type: 'web' as const,
-  },
-  DASHBOARD: {
-    name: 'analytics-dashboard',
-    url: `${SOCIAL_LINKS.GITHUB}/analytics-dashboard`,
-    demo: 'https://dashboard.paisible.tech',
-    type: 'web' as const,
-  },
-  SOCIAL_MEDIA: {
-    name: 'social-app',
-    url: `${SOCIAL_LINKS.GITHUB}/social-app`,
-    demo: '',
-    type: 'mobile' as const,
-  },
-  PORTFOLIO: {
-    name: 'portfolio_vue',
-    url: `${SOCIAL_LINKS.GITHUB}/portfolio_vue`,
-    demo: 'https://paisible.tech',
-    type: 'web' as const,
-  },
-  TASK_MANAGER: {
-    name: 'task-management',
-    url: `${SOCIAL_LINKS.GITHUB}/task-management`,
-    demo: 'https://tasks.paisible.tech',
-    type: 'web' as const,
-  },
-  WEATHER: {
-    name: 'weather-dashboard',
-    url: `${SOCIAL_LINKS.GITHUB}/weather-dashboard`,
-    demo: 'https://weather.paisible.tech',
-    type: 'web' as const,
-  },
-}
+export const PROJECT_REPOS = [
+  'SPOTIFY_CLONE',
+  'analytics-dashboard',
+  'social-app',
+  'portfolio_vue',
+  'task-management',
+  'weather-dashboard',
+]
 
 const GITHUB_RAW_BASE = `https://raw.githubusercontent.com/${GITHUB_USERNAME}`
+
+export const getRepoUrl = (repoName: string) => {
+  return `${SOCIAL_LINKS.GITHUB}/${repoName}`
+}
 
 export const getRawReadmeUrl = (repoName: string, branch = 'main') => {
   return `${GITHUB_RAW_BASE}/${repoName}/${branch}/README.md`
