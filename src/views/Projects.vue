@@ -59,22 +59,22 @@ const extractImage = (readme: string, repoName: string): string => {
 }
 
 const extractDescription = (readme: string): string => {
-  const match = readme.match(/##\s*(?:📝\s*)?Description\s*\n+>\s*([^\n]+)/i)
+  const match = readme.match(/##\s*Description\s*\n+>\s*([^\n]+)/i)
   return match && match[1] ? match[1].trim() : ''
 }
 
 const extractType = (readme: string): 'web' | 'mobile' => {
-  const match = readme.match(/\*\*Type:\*\*\s*(web|mobile)/i)
+  const match = readme.match(/-\s*\*\*Type:\*\*\s*(web|mobile)/i)
   return match && match[1] ? (match[1].toLowerCase() as 'web' | 'mobile') : 'web'
 }
 
 const extractDemo = (readme: string): string => {
-  const match = readme.match(/\*\*Demo:\*\*\s*(https?:\/\/[^\s\n]+)/i)
+  const match = readme.match(/-\s*\*\*Demo:\*\*\s*(https?:\/\/[^\s\n]+)/i)
   return match && match[1] ? match[1].trim() : ''
 }
 
 const extractTags = (readme: string): string[] => {
-  const stackMatch = readme.match(/##\s*(?:🛠\s*)?Stack Technique\s*\n([\s\S]*?)(?=\n##|\n---|\n$)/i)
+  const stackMatch = readme.match(/##\s*Stack Technique\s*\n([\s\S]*?)(?=\n##|\n---|\n$)/i)
   if (stackMatch && stackMatch[1]) {
     const tags: string[] = []
     const lines = stackMatch[1].split('\n')
