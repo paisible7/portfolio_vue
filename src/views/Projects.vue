@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { ExternalLink, Github, Loader2 } from 'lucide-vue-next'
+import { ExternalLink, Github, Loader2, Download } from 'lucide-vue-next'
 import { PROJECT_REPOS, GITHUB_ROUTES, getRawReadmeUrl } from '@/config/links'
 
 interface Project {
@@ -10,6 +10,7 @@ interface Project {
   image: string
   gradient: string
   repoName: string
+  type: 'web' | 'mobile'
   links: { github: string; demo: string }
   isLoading: boolean
 }
@@ -22,7 +23,8 @@ const projects = ref<Project[]>([
     image: '',
     gradient: 'from-green-600 to-green-800',
     repoName: PROJECT_REPOS.SPOTIFY_CLONE.name,
-    links: { github: PROJECT_REPOS.SPOTIFY_CLONE.url, demo: '' },
+    type: PROJECT_REPOS.SPOTIFY_CLONE.type,
+    links: { github: PROJECT_REPOS.SPOTIFY_CLONE.url, demo: PROJECT_REPOS.SPOTIFY_CLONE.demo },
     isLoading: true,
   },
   {
@@ -32,7 +34,8 @@ const projects = ref<Project[]>([
     image: '',
     gradient: 'from-orange-600 to-orange-800',
     repoName: PROJECT_REPOS.DASHBOARD.name,
-    links: { github: PROJECT_REPOS.DASHBOARD.url, demo: '' },
+    type: PROJECT_REPOS.DASHBOARD.type,
+    links: { github: PROJECT_REPOS.DASHBOARD.url, demo: PROJECT_REPOS.DASHBOARD.demo },
     isLoading: true,
   },
   {
@@ -42,7 +45,8 @@ const projects = ref<Project[]>([
     image: '',
     gradient: 'from-blue-500 to-orange-500',
     repoName: PROJECT_REPOS.SOCIAL_MEDIA.name,
-    links: { github: PROJECT_REPOS.SOCIAL_MEDIA.url, demo: '' },
+    type: PROJECT_REPOS.SOCIAL_MEDIA.type,
+    links: { github: PROJECT_REPOS.SOCIAL_MEDIA.url, demo: PROJECT_REPOS.SOCIAL_MEDIA.demo },
     isLoading: true,
   },
   {
@@ -52,7 +56,8 @@ const projects = ref<Project[]>([
     image: '',
     gradient: 'from-slate-700 to-blue-900',
     repoName: PROJECT_REPOS.PORTFOLIO.name,
-    links: { github: PROJECT_REPOS.PORTFOLIO.url, demo: '' },
+    type: PROJECT_REPOS.PORTFOLIO.type,
+    links: { github: PROJECT_REPOS.PORTFOLIO.url, demo: PROJECT_REPOS.PORTFOLIO.demo },
     isLoading: true,
   },
   {
@@ -62,7 +67,8 @@ const projects = ref<Project[]>([
     image: '',
     gradient: 'from-blue-700 to-slate-900',
     repoName: PROJECT_REPOS.TASK_MANAGER.name,
-    links: { github: PROJECT_REPOS.TASK_MANAGER.url, demo: '' },
+    type: PROJECT_REPOS.TASK_MANAGER.type,
+    links: { github: PROJECT_REPOS.TASK_MANAGER.url, demo: PROJECT_REPOS.TASK_MANAGER.demo },
     isLoading: true,
   },
   {
@@ -72,7 +78,8 @@ const projects = ref<Project[]>([
     image: '',
     gradient: 'from-orange-500 to-yellow-600',
     repoName: PROJECT_REPOS.WEATHER.name,
-    links: { github: PROJECT_REPOS.WEATHER.url, demo: '' },
+    type: PROJECT_REPOS.WEATHER.type,
+    links: { github: PROJECT_REPOS.WEATHER.url, demo: PROJECT_REPOS.WEATHER.demo },
     isLoading: true,
   },
 ])
@@ -204,8 +211,10 @@ onMounted(() => {
                 target="_blank"
                 rel="noopener noreferrer"
                 class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center hover:bg-white/30 transition-colors"
+                :title="project.type === 'mobile' ? 'Télécharger' : 'Voir la démo'"
               >
-                <ExternalLink class="w-6 h-6" />
+                <Download v-if="project.type === 'mobile'" class="w-6 h-6" />
+                <ExternalLink v-else class="w-6 h-6" />
               </a>
             </div>
           </div>
