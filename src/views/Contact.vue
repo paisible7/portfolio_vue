@@ -132,8 +132,9 @@ const contactInfo = [
               </component>
             </div>
         </div>
+      </div>
 
-        <div class="backdrop-blur-lg bg-white/5 border border-white/10 rounded-3xl p-8 shadow-2xl">
+      <div class="backdrop-blur-lg bg-white/5 border border-white/10 rounded-3xl p-8 shadow-2xl">
           <h3 class="text-2xl text-blue-400 mb-6">Envoyez un message</h3>
           <form @submit="handleSubmit" class="space-y-6">
             <div>

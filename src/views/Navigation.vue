@@ -57,8 +57,6 @@ const handleDownload = async () => {
             </span>
           </div>
 
-          </div>
-
           <div class="hidden md:flex items-center gap-6 flex-1 justify-center">
             <button
               v-for="item in navItems"
