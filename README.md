@@ -1,6 +1,19 @@
-# new_portfolio
+# Mon Portfolio
 
-This template should help get you started developing with Vue 3 in Vite.
+<img src="/src/assets/images/portfolio/hero.png" alt="Banner" width="100%" />
+
+## Description
+> Un superbe portfolio dynamic fait en vueJS avec un design glassmorphic
+
+## Liens
+- **Type:** web
+- **Demo:** https://paisible.tech
+
+## Stack Technique
+* **Framework:** Vue.js 3
+* **Langage:** TypeScript
+* **Style:** Tailwind CSS
+
 
 ## Recommended IDE Setup
 
