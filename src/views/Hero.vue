@@ -52,7 +52,7 @@ onBeforeUnmount(() => {
           </div>
 
           <p class="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
-            Passionné par la création d'expériences web innovantes et performantes.
+            Passionné par la création d'expériences web et mobile innovantes et performantes.
           </p>
 
           <div class="flex gap-4 justify-center pt-6">
