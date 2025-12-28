@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// Import skill images
 import vuejsImg from '@/assets/images/skill/vuejs.png'
 import tailwindImg from '@/assets/images/skill/tailwind.png'
 import javascriptImg from '@/assets/images/skill/javascript.png'

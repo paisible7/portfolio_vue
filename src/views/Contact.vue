@@ -3,6 +3,9 @@ import { ref, reactive } from 'vue'
 import { Mail, MapPin, Phone, Send, Github, Linkedin, MessageSquare, Loader2 } from 'lucide-vue-next'
 import { SOCIAL_LINKS } from '@/config/links'
 import { sendEmail } from '@/services/emailService'
+import { useToast } from '@/composables/useToast'
+
+const { addToast } = useToast()
 
 const formData = reactive({
   name: '',
@@ -10,11 +13,56 @@ const formData = reactive({
   message: '',
 })
 
+const errors = reactive({
+  name: '',
+  email: '',
+  message: '',
+})
+
 const isLoading = ref(false)
+
+const validateForm = () => {
+  let isValid = true
+  errors.name = ''
+  errors.email = ''
+  errors.message = ''
+
+  if (!formData.name.trim()) {
+    errors.name = 'Le nom est requis'
+    isValid = false
+  } else if (formData.name.trim().length < 2) {
+    errors.name = 'Le nom doit contenir au moins 2 caractères'
+    isValid = false
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  if (!formData.email.trim()) {
+    errors.email = 'L\'email est requis'
+    isValid = false
+  } else if (!emailRegex.test(formData.email)) {
+    errors.email = 'Veuillez entrer un email valide'
+    isValid = false
+  }
+
+  if (!formData.message.trim()) {
+    errors.message = 'Le message ne peut pas être vide'
+    isValid = false
+  } else if (formData.message.trim().length < 10) {
+    errors.message = 'Le message doit contenir au moins 10 caractères'
+    isValid = false
+  }
+
+  return isValid
+}
 
 const handleSubmit = async (e: Event) => {
   e.preventDefault()
   if (isLoading.value) return
+
+  if (!validateForm()) {
+    addToast('Veuillez corriger les erreurs dans le formulaire', 'error')
+    return
+  }
 
   isLoading.value = true
   
@@ -24,7 +72,7 @@ const handleSubmit = async (e: Event) => {
     message: formData.message
   })
 
-  alert(result.message)
+  addToast(result.message, result.success ? 'success' : 'error')
   
   if (result.success) {
     formData.name = ''
@@ -56,7 +104,6 @@ const contactInfo = [
       </div>
 
       <div class="grid md:grid-cols-2 gap-8 items-start">
-        <!-- Contact Info -->
         <div class="space-y-6">
           <div class="backdrop-blur-lg bg-white/5 border border-white/10 rounded-3xl p-8 shadow-2xl">
             <h3 class="text-2xl text-blue-400 mb-6">Restons en contact</h3>
@@ -84,10 +131,8 @@ const contactInfo = [
                 </div>
               </component>
             </div>
-          </div>
         </div>
 
-        <!-- Contact Form -->
         <div class="backdrop-blur-lg bg-white/5 border border-white/10 rounded-3xl p-8 shadow-2xl">
           <h3 class="text-2xl text-blue-400 mb-6">Envoyez un message</h3>
           <form @submit="handleSubmit" class="space-y-6">
@@ -95,33 +140,39 @@ const contactInfo = [
               <label class="block text-white/80 mb-2">Nom</label>
               <input
                 type="text"
-                required
                 v-model="formData.name"
-                class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/40 focus:outline-none focus:border-blue-500/50 focus:bg-white/10 transition-all"
+                @input="errors.name = ''"
+                class="w-full px-4 py-3 rounded-xl bg-white/5 border text-white placeholder-white/40 focus:outline-none focus:bg-white/10 transition-all"
+                :class="errors.name ? 'border-red-500/50 focus:border-red-500' : 'border-white/10 focus:border-blue-500/50'"
                 placeholder="Votre nom"
               />
+              <p v-if="errors.name" class="mt-1 text-xs text-red-400 ml-2 animate-in fade-in slide-in-from-top-1">{{ errors.name }}</p>
             </div>
 
             <div>
               <label class="block text-white/80 mb-2">Email</label>
               <input
-                type="email"
-                required
+                type="text"
                 v-model="formData.email"
-                class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/40 focus:outline-none focus:border-blue-500/50 focus:bg-white/10 transition-all"
+                @input="errors.email = ''"
+                class="w-full px-4 py-3 rounded-xl bg-white/5 border text-white placeholder-white/40 focus:outline-none focus:bg-white/10 transition-all"
+                :class="errors.email ? 'border-red-500/50 focus:border-red-500' : 'border-white/10 focus:border-blue-500/50'"
                 placeholder="votre@email.com"
               />
+              <p v-if="errors.email" class="mt-1 text-xs text-red-400 ml-2 animate-in fade-in slide-in-from-top-1">{{ errors.email }}</p>
             </div>
 
             <div>
               <label class="block text-white/80 mb-2">Message</label>
               <textarea
-                required
                 v-model="formData.message"
+                @input="errors.message = ''"
                 rows="5"
-                class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/40 focus:outline-none focus:border-blue-500/50 focus:bg-white/10 transition-all resize-none"
+                class="w-full px-4 py-3 rounded-xl bg-white/5 border text-white placeholder-white/40 focus:outline-none focus:bg-white/10 transition-all resize-none"
+                :class="errors.message ? 'border-red-500/50 focus:border-red-500' : 'border-white/10 focus:border-blue-500/50'"
                 placeholder="Votre message..."
               />
+              <p v-if="errors.message" class="mt-1 text-xs text-red-400 ml-2 animate-in fade-in slide-in-from-top-1">{{ errors.message }}</p>
             </div>
 
             <button
@@ -140,7 +191,6 @@ const contactInfo = [
         </div>
       </div>
 
-      <!-- Footer -->
       <div class="text-center mt-16 text-white/50">
         <p>© 2025 M. Paisible. Tous droits réservés.</p>
       </div>

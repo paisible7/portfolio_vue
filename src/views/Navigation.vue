@@ -33,10 +33,8 @@ const handleDownload = async () => {
   
   isDownloading.value = true
   
-  // Simulation du délai de 3 secondes
   await new Promise(resolve => setTimeout(resolve, 3000))
   
-  // Déclenchement du téléchargement
   const link = document.createElement('a')
   link.href = cvFile
   link.download = 'CV_Augustin_Kalonji.pdf'
@@ -55,12 +53,12 @@ const handleDownload = async () => {
         <div class="flex items-center justify-between">
           <div class="text-xl tracking-wider">
             <span class="">
-              <!-- Logo / Marque -->
               <img src="/logoMP.png" class="w-10"/>
             </span>
           </div>
 
-          <!-- Desktop Navigation -->
+          </div>
+
           <div class="hidden md:flex items-center gap-6 flex-1 justify-center">
             <button
               v-for="item in navItems"
@@ -99,7 +97,6 @@ const handleDownload = async () => {
           </button>
         </div>
 
-        <!-- Mobile Navigation -->
         <div v-if="isOpen" class="md:hidden mt-4 pt-4 border-t border-white/20 flex flex-col gap-2">
           <button
             v-for="item in navItems"

@@ -37,7 +37,6 @@ const extractTitle = (readme: string): string => {
 }
 
 const extractImage = (readme: string, repoPath: string): string => {
-  // Special case for capslock as requested by user
   if (repoPath.toLowerCase().includes('capslock')) {
     return 'https://capslock.site/assets/IMG-20250329-WA0008-C1xQH2Qj.jpg'
   }

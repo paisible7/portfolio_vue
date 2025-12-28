@@ -7,8 +7,8 @@ import About from '@/views/About.vue'
 import Projects from '@/views/Projects.vue'
 import Skills from '@/views/Skills.vue'
 import Contact from '@/views/Contact.vue'
+import ToastContainer from '@/components/ui/ToastContainer.vue'
 
-// État actif de la section
 const activeSection = ref<'home' | 'about' | 'projects' | 'skills' | 'contact'>('home')
 
 const handleScroll = () => {
@@ -50,6 +50,7 @@ onBeforeUnmount(() => {
     </main>
     <div class="fixed top-0 left-0 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl animate-pulse" style="animation-duration: 4s"></div>
     <div class="fixed bottom-0 right-0 w-96 h-96 bg-orange-500/20 rounded-full blur-3xl animate-pulse" style="animation-duration: 6s"></div>
+    <ToastContainer />
   </div>
 </template>
 

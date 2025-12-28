@@ -88,18 +88,4 @@ onMounted(() => {
 </template>
 
 <style scoped>
-/* Optionnel: un dégradé de fond sous le canvas, si souhaité
-:root {
-  --bg-from: #000000;
-  --bg-via: #0f172a;
-  --bg-to: #0b2b63;
-}
-
-.background-gradient {
-  position: fixed;
-  inset: 0;
-  background: linear-gradient(135deg, var(--bg-from), var(--bg-via), var(--bg-to));
-  z-index: -1;
-}
-*/
 </style>
