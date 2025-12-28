@@ -36,12 +36,18 @@ const extractTitle = (readme: string): string => {
   return match && match[1] ? match[1].trim() : ''
 }
 
-const extractImage = (readme: string, repoName: string): string => {
+const extractImage = (readme: string, repoPath: string): string => {
+  // Special case for capslock as requested by user
+  if (repoPath.toLowerCase().includes('capslock')) {
+    return 'https://capslock.site/assets/IMG-20250329-WA0008-C1xQH2Qj.jpg'
+  }
+
   const imgTagMatch = readme.match(/<img[^>]+src=["']([^"']+)["'][^>]*>/i)
   if (imgTagMatch && imgTagMatch[1]) {
     const src = imgTagMatch[1]
     if (src.startsWith('./') || src.startsWith('../') || !src.startsWith('http')) {
-      return `https://raw.githubusercontent.com/paisible7/${repoName}/main/${src.replace(/^\.\//, '')}`
+      const path = repoPath.includes('/') ? repoPath : `paisible7/${repoPath}`
+      return `https://raw.githubusercontent.com/${path}/main/${src.replace(/^\.\//, '')}`
     }
     return src
   }
@@ -50,7 +56,8 @@ const extractImage = (readme: string, repoName: string): string => {
   if (markdownMatch && markdownMatch[1]) {
     const src = markdownMatch[1]
     if (src.startsWith('./') || src.startsWith('../') || !src.startsWith('http')) {
-      return `https://raw.githubusercontent.com/paisible7/${repoName}/main/${src.replace(/^\.\//, '')}`
+      const path = repoPath.includes('/') ? repoPath : `paisible7/${repoPath}`
+      return `https://raw.githubusercontent.com/${path}/main/${src.replace(/^\.\//, '')}`
     }
     return src
   }
@@ -143,9 +150,16 @@ const extractReposFromMainReadme = (readme: string): string[] => {
     const repos: string[] = []
     const lines = sectionMatch[1].split('\n')
     for (const line of lines) {
-      const match = line.match(/\[([^\]]+)\]\(https:\/\/github\.com\/[^/]+\/([^/)]+)\)/i)
+      // Capture the part after github.com/ (e.g., owner/repo)
+      const match = line.match(/\[([^\]]+)\]\(https:\/\/github\.com\/([^/)]+\/[^/)]+)\)/i)
       if (match && match[2]) {
-        repos.push(match[2].trim())
+        const repoPath = match[2].trim()
+        // Filter out organization repos (not starting with paisible7/)
+        // except if they are just the repo name (which will default to paisible7)
+        if (repoPath.includes('/') && !repoPath.startsWith('paisible7/')) {
+          continue
+        }
+        repos.push(repoPath)
       }
     }
     return repos

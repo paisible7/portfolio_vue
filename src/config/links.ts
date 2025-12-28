@@ -15,6 +15,7 @@ export const GITHUB_ROUTES = {
 
 export const PROJECT_REPOS = [
   'SPOTIFY_CLONE',
+  'capslock',
   'analytics-dashboard',
   'social-app',
   'portfolio_vue',
@@ -22,16 +23,19 @@ export const PROJECT_REPOS = [
   'weather-dashboard',
 ]
 
-const GITHUB_RAW_BASE = `https://raw.githubusercontent.com/${GITHUB_USERNAME}`
+const GITHUB_RAW_BASE = `https://raw.githubusercontent.com`
 
-export const getRepoUrl = (repoName: string) => {
-  return `${SOCIAL_LINKS.GITHUB}/${repoName}`
+export const getRepoUrl = (repoPath: string) => {
+  if (repoPath.includes('/')) return `https://github.com/${repoPath}`
+  return `${SOCIAL_LINKS.GITHUB}/${repoPath}`
 }
 
-export const getRawReadmeUrl = (repoName: string, branch = 'main') => {
-  return `${GITHUB_RAW_BASE}/${repoName}/${branch}/README.md`
+export const getRawReadmeUrl = (repoPath: string, branch = 'main') => {
+  const path = repoPath.includes('/') ? repoPath : `${GITHUB_USERNAME}/${repoPath}`
+  return `${GITHUB_RAW_BASE}/${path}/${branch}/README.md`
 }
 
-export const getGithubImageUrl = (repoName: string, imagePath: string, branch = 'main') => {
-  return `${GITHUB_RAW_BASE}/${repoName}/${branch}/${imagePath}`
+export const getGithubImageUrl = (repoPath: string, imagePath: string, branch = 'main') => {
+  const path = repoPath.includes('/') ? repoPath : `${GITHUB_USERNAME}/${repoPath}`
+  return `${GITHUB_RAW_BASE}/${path}/${branch}/${imagePath}`
 }
