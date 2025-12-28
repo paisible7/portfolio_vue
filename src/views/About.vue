@@ -39,7 +39,7 @@ const highlights = [
       <div class="grid md:grid-cols-3 gap-8 mb-12">
         <!-- Photo personnelle -->
         <div class="backdrop-blur-lg bg-white/5 border border-white/10 rounded-3xl p-4 shadow-2xl flex items-center justify-center">
-          <img :src="moi1Img" alt="Photo personnelle" class="w-full h-full object-cover rounded-2xl max-h-80" />
+          <img :src="moi1Img" alt="Photo personnelle" class="w-full h-full object-cover object-top rounded-2xl max-h-80" />
         </div>
 
         <div class="backdrop-blur-lg bg-white/5 border border-white/10 rounded-3xl p-8 shadow-2xl">
