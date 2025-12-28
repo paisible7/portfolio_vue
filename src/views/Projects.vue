@@ -150,19 +150,12 @@ const extractReposFromMainReadme = (readme: string): string[] => {
     const repos: string[] = []
     const lines = sectionMatch[1].split('\n')
     for (const line of lines) {
-      // Capture the part after github.com/ (e.g., owner/repo)
       const match = line.match(/\[([^\]]+)\]\(https:\/\/github\.com\/([^/)]+\/[^/)]+)\)/i)
       if (match && match[2]) {
-        const repoPath = match[2].trim()
-        // Filter out organization repos (not starting with paisible7/)
-        // except if they are just the repo name (which will default to paisible7)
-        if (repoPath.includes('/') && !repoPath.startsWith('paisible7/')) {
-          continue
-        }
-        repos.push(repoPath)
+        repos.push(match[2].trim())
       }
     }
-    return repos
+    return repos.slice(0, 6)
   }
   return []
 }
@@ -171,35 +164,20 @@ const isGlobalLoading = ref(true)
 
 onMounted(async () => {
   try {
-    // 1. Fetch main portfolio README to get the list of repos
     const response = await fetch(getRawReadmeUrl('portfolio_vue'))
-    
-    let repoNames: string[] = []
     
     if (response.ok) {
       const mainReadme = await response.text()
-      repoNames = extractReposFromMainReadme(mainReadme)
+      const repoNames = extractReposFromMainReadme(mainReadme)
+      
+      const loadedProjects = await Promise.all(
+        repoNames.map((repoName, index) => loadProject(repoName, index))
+      )
+      
+      projects.value = loadedProjects.filter(p => !p.hasError || p.title)
     }
-
-    // 2. Fallback to constant if no repos found or fetch failed
-    if (repoNames.length === 0) {
-      console.warn('Using static project list fallback')
-      repoNames = PROJECT_REPOS
-    }
-    
-    // 3. Load each project's data
-    const loadedProjects = await Promise.all(
-      repoNames.map((repoName, index) => loadProject(repoName, index))
-    )
-    
-    projects.value = loadedProjects.filter(p => !p.hasError || p.title)
   } catch (error) {
     console.error('Error in onMounted:', error)
-    // Emergency fallback
-    const loadedProjects = await Promise.all(
-      PROJECT_REPOS.map((repoName, index) => loadProject(repoName, index))
-    )
-    projects.value = loadedProjects.filter(p => !p.hasError || p.title)
   } finally {
     isGlobalLoading.value = false
   }
@@ -235,7 +213,7 @@ onMounted(async () => {
               v-else-if="project.image" 
               :src="project.image" 
               :alt="project.title"
-              class="absolute inset-0 w-full h-full object-contain p-4"
+              class="absolute inset-0 w-full h-full object-cover"
             />
             <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
             <div class="absolute inset-0 backdrop-blur-sm bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
