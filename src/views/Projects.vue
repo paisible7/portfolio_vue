@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { ExternalLink, Github, Loader2, Download } from 'lucide-vue-next'
-import { PROJECT_REPOS, GITHUB_ROUTES, getRawReadmeUrl, getRepoUrl } from '@/config/links'
+import { GITHUB_ROUTES, getRawReadmeUrl, getRepoUrl } from '@/config/links'
 
 interface Project {
   title: string

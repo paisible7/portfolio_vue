@@ -13,16 +13,6 @@ export const GITHUB_ROUTES = {
   REPOSITORIES: `${SOCIAL_LINKS.GITHUB}?tab=repositories`,
 }
 
-export const PROJECT_REPOS = [
-  'SPOTIFY_CLONE',
-  'capslock',
-  'analytics-dashboard',
-  'social-app',
-  'portfolio_vue',
-  'task-management',
-  'weather-dashboard',
-]
-
 const GITHUB_RAW_BASE = `https://raw.githubusercontent.com`
 
 export const getRepoUrl = (repoPath: string) => {
