@@ -10,6 +10,8 @@ import kotlinImg from '@/assets/images/skill/kotlin.png'
 import firebaseImg from '@/assets/images/skill/firebase.png'
 import supabaseImg from '@/assets/images/skill/supabase.png'
 import djangoImg from '@/assets/images/skill/django.png'
+import postgresqlImg from '@/assets/images/skill/postgresql.png'
+
 
 import adobePSImg from '@/assets/images/skill/adobePS.png'
 import canvaImg from '@/assets/images/skill/canva.png'
@@ -37,6 +39,8 @@ const skillCategories = [
       { name: 'Firebase', icon: firebaseImg },
       { name: 'Supabase', icon: supabaseImg },
       { name: 'Django', icon: djangoImg },
+      { name: 'PostgreSQL', icon: postgresqlImg },
+
 
     ],
   },

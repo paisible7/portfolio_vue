@@ -44,8 +44,8 @@ const highlights = [
         <div class="backdrop-blur-lg bg-white/5 border border-white/10 rounded-3xl p-8 shadow-2xl">
           <h3 class="text-2xl text-blue-400 mb-4">Mon Parcours</h3>
           <p class="text-white/80 leading-relaxed mb-4">
-            Développeur frontend passionné avec plus de 5 ans d'expérience dans la création
-            d'applications web modernes et performantes. Je transforme des idées en expériences
+            Développeur frontend passionné avec plus de 2 ans d'expérience dans la création
+            d'applications web et mobile modernes et performantes. Je transforme des idées en expériences
             utilisateur exceptionnelles.
           </p>
           <p class="text-white/80 leading-relaxed">
