@@ -47,3 +47,5 @@ npm run build
 - [SPOTIFY_CLONE](https://github.com/paisible7/SPOTIFY_CLONE)
 - [Capslock Portfolio](https://github.com/paisible7/capslock)
 - [portfolio_vue](https://github.com/paisible7/portfolio_vue)
+- [portfolio_vue](https://github.com/paisible7/portfolio_vue)
+
