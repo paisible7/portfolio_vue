@@ -13,7 +13,8 @@ export const sendEmail = async (data: EmailData) => {
       from_name: data.name,
       from_email: data.email,
       message: data.message,
-      to_name: 'Augustin Kalonji', // Votre nom
+      to_name: 'Augustin Kalonji',
+      site_name: 'Mon Portfolio', // Nom plus sobre pour l'email
     }
 
     const response = await emailjs.send(
