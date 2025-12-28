@@ -64,12 +64,12 @@ const extractDescription = (readme: string): string => {
 }
 
 const extractType = (readme: string): 'web' | 'mobile' => {
-  const match = readme.match(/-\s*\*\*Type:\*\*\s*(web|mobile)/i)
+  const match = readme.match(/Type:\*\*\s*(web|mobile)/i)
   return match && match[1] ? (match[1].toLowerCase() as 'web' | 'mobile') : 'web'
 }
 
 const extractDemo = (readme: string): string => {
-  const match = readme.match(/-\s*\*\*Demo:\*\*\s*(https?:\/\/[^\s\n]+)/i)
+  const match = readme.match(/Demo:\*\*\s*(https?:\/\/[^\s\n]+)/i)
   return match && match[1] ? match[1].trim() : ''
 }
 
@@ -137,11 +137,58 @@ const loadProject = async (repoName: string, index: number): Promise<Project> =>
   return project
 }
 
+const extractReposFromMainReadme = (readme: string): string[] => {
+  const sectionMatch = readme.match(/##\s*Projets\s*\n([\s\S]*?)(?=\n##|\n---|\n$)/i)
+  if (sectionMatch && sectionMatch[1]) {
+    const repos: string[] = []
+    const lines = sectionMatch[1].split('\n')
+    for (const line of lines) {
+      const match = line.match(/\[([^\]]+)\]\(https:\/\/github\.com\/[^/]+\/([^/)]+)\)/i)
+      if (match && match[2]) {
+        repos.push(match[2].trim())
+      }
+    }
+    return repos
+  }
+  return []
+}
+
+const isGlobalLoading = ref(true)
+
 onMounted(async () => {
-  const loadedProjects = await Promise.all(
-    PROJECT_REPOS.map((repoName, index) => loadProject(repoName, index))
-  )
-  projects.value = loadedProjects.filter(p => !p.hasError || p.title)
+  try {
+    // 1. Fetch main portfolio README to get the list of repos
+    const response = await fetch(getRawReadmeUrl('portfolio_vue'))
+    
+    let repoNames: string[] = []
+    
+    if (response.ok) {
+      const mainReadme = await response.text()
+      repoNames = extractReposFromMainReadme(mainReadme)
+    }
+
+    // 2. Fallback to constant if no repos found or fetch failed
+    if (repoNames.length === 0) {
+      console.warn('Using static project list fallback')
+      repoNames = PROJECT_REPOS
+    }
+    
+    // 3. Load each project's data
+    const loadedProjects = await Promise.all(
+      repoNames.map((repoName, index) => loadProject(repoName, index))
+    )
+    
+    projects.value = loadedProjects.filter(p => !p.hasError || p.title)
+  } catch (error) {
+    console.error('Error in onMounted:', error)
+    // Emergency fallback
+    const loadedProjects = await Promise.all(
+      PROJECT_REPOS.map((repoName, index) => loadProject(repoName, index))
+    )
+    projects.value = loadedProjects.filter(p => !p.hasError || p.title)
+  } finally {
+    isGlobalLoading.value = false
+  }
 })
 </script>
 

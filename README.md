@@ -43,6 +43,10 @@ npm run build
 
 ### Lint with [ESLint](https://eslint.org/)
 
-```sh
-npm run lint
-```
+## Projets
+- [SPOTIFY_CLONE](https://github.com/paisible7/SPOTIFY_CLONE)
+- [analytics-dashboard](https://github.com/paisible7/analytics-dashboard)
+- [social-app](https://github.com/paisible7/social-app)
+- [portfolio_vue](https://github.com/paisible7/portfolio_vue)
+- [task-management](https://github.com/paisible7/task-management)
+- [weather-dashboard](https://github.com/paisible7/weather-dashboard)
