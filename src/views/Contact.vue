@@ -91,6 +91,8 @@ const contactInfo = [
   { icon: Linkedin, label: 'LinkedIn', value: 'Augustin Kalonji', link: SOCIAL_LINKS.LINKEDIN },
   { icon: MapPin, label: 'Localisation', value: 'Lubumbashi, RDCongo', link: undefined },
 ] as const
+
+const year = new Date().getFullYear();
 </script>
 
 <template>
@@ -193,7 +195,7 @@ const contactInfo = [
       </div>
 
       <div class="text-center mt-16 text-white/50">
-        <p>© 2025 M. Paisible. Tous droits réservés.</p>
+        <p>© {{year}} M. Paisible. Tous droits réservés.</p>
       </div>
     </div>
   </section>
